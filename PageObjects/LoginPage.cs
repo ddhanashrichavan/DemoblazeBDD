@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Support.UI;
 
 namespace DemoblazeBDD.PageObjects
 {
@@ -9,48 +11,40 @@ namespace DemoblazeBDD.PageObjects
     {
         public LoginPage(IWebDriver driver) : base(driver) { }
 
-        public IWebElement Username => Driver.FindElement(By.XPath("//input[@id='username']"));
-        public IWebElement Password => Driver.FindElement(By.XPath("//input[@id='password']"));
+        public IWebElement UsernameLogin => Driver.FindElement(By.XPath("//input[@id='loginusername']"));
+        public IWebElement PasswordLogin => Driver.FindElement(By.XPath("//input[@id='loginpassword']"));
 
-        public IWebElement Login_Button => Driver.FindElement(By.XPath("//button[@id='login']"));
+        public IWebElement UsernameSignin => Driver.FindElement(By.XPath("//input[@id='sign-username']"));
+        public IWebElement PasswordSignin => Driver.FindElement(By.XPath("//input[@id='sign-password']"));
+        public IWebElement LoginButton => Driver.FindElement(By.XPath("//a[@id='login2']"));
+        public IWebElement SigninButton => Driver.FindElement(By.XPath("//a[@id='signin2']"));
+       
+        public IWebElement LoginProceed => Driver.FindElement(By.XPath("//button[contains(text(),'Log in')]"));
 
-        public IWebElement Modules_Dropdown => Driver.FindElement(By.LinkText("Modules"));
+        public IWebElement SigninProceed => Driver.FindElement(By.XPath("//input[@id='sign-password']"));
 
-        public IWebElement Environment_Dropdown => Driver.FindElement(By.LinkText("Environment"));
-
-        public IWebElement Release_to_water_Text => Driver.FindElement(By.LinkText("Release To Water"));
-
-        public IWebElement New_Record_Button => Driver.FindElement(By.XPath("//a[normalize-space()='New Record']"));
-
-        public IWebElement Description_Field => Driver.FindElement(By.XPath("//textarea[@id='SheReleaseToWater_Description']"));
-
-        public IWebElement Sample_Date_Field => Driver.FindElement(By.XPath("//input[@id='SheReleaseToWater_SampleDate']"));
-
-        public IWebElement Save_and_Close_Button => Driver.FindElement(By.XPath("//button[normalize-space()='Save & Close']"));
-
-        public IWebElement _Button => Driver.FindElement(By.XPath("//button[normalize-space()='Save & Close']"));
-
-        public IWebElement Cog_Button => Driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[3]/section[1]/div[4]/div[2]/div[3]/div[2]/button[1]"));
-
-        public IWebElement Cog_Delete => Driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[3]/section[1]/div[4]/div[2]/div[3]/div[2]/ul[1]/li[4]/a[1]"));
-
-        public IWebElement Confirm_Button => Driver.FindElement(By.XPath("//button[normalize-space()='Confirm']"));
-
-        public IWebElement Its_a_test_link => Driver.FindElement(By.XPath("(//a[@title='its a test'][normalize-space()='its a test'])[2]"));
-
-        public IWebElement Sample_Date_link => Driver.FindElement(By.LinkText("02/05/2022"));
-
-        public IWebElement Results_are_True_Link => Driver.FindElement(By.XPath("(//a[@title='results are true'][normalize-space()='results are true'])[1]"));
-
-        public IWebElement Date_link => Driver.FindElement(By.XPath("//body/div[@id='main-content']/div[@id='site-wrapper']/section[@role='main']/div[@class='item-box ui-selectable']/div[1]/div[1]/ul[1]/li[3]/a[1]"));
-
-        public IWebElement User_Drop_Down => Driver.FindElement(By.XPath("//a[@title='Pramila Kadam']"));
-
-        public IWebElement Logout_Button => Driver.FindElement(By.XPath("//a[normalize-space()='Log Out']"));
+        public IWebElement LogoutButton => Driver.FindElement(By.XPath("//a[normalize-space()='Log Out']"));
 
         public void NavigateToLoginpage()
         {
-            Navigate("https://stirling.she-development.net/automation");
+            Navigate("https://www.demoblaze.com/index.html");
+        }
+
+        public IAlert switchToAlert()
+        {
+            return Driver.SwitchTo().Alert();
+        }
+
+        public void UntilExists(IWebElement element)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementToBeClickable(element));
+        }
+
+        public void UntilAlertExists()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver,TimeSpan.FromSeconds(20));
+            wait.Until(ExpectedConditions.AlertIsPresent());
         }
 
 

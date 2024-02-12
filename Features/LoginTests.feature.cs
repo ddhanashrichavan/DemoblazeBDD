@@ -20,8 +20,8 @@ namespace DemoblazeBDD.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Release_to_Water")]
-    public partial class Release_To_WaterFeature
+    [NUnit.Framework.DescriptionAttribute("Login scenario")]
+    public partial class LoginScenarioFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace DemoblazeBDD.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Release_to_Water", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Login scenario", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,20 +74,25 @@ namespace DemoblazeBDD.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Release to Water Scenario")]
-        [NUnit.Framework.TestCaseAttribute("PramilaK", "Evo@99", "02/05/2022", "its a test", "06/08/2022", "results are true", null)]
-        public virtual void ReleaseToWaterScenario(string username, string password, string sampleDate_One, string description_One, string sampleDate_Two, string description_Two, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Login to the website")]
+        [NUnit.Framework.CategoryAttribute("Login")]
+        [NUnit.Framework.CategoryAttribute("Positive")]
+        [NUnit.Framework.TestCaseAttribute("DhanaC", "1234", null)]
+        public virtual void LoginToTheWebsite(string username, string password, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "Login",
+                    "Positive"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Username", username);
             argumentsOfScenario.Add("Password", password);
-            argumentsOfScenario.Add("SampleDate_one", sampleDate_One);
-            argumentsOfScenario.Add("Description_one", description_One);
-            argumentsOfScenario.Add("SampleDate_two", sampleDate_Two);
-            argumentsOfScenario.Add("Description_two", description_Two);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Release to Water Scenario", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login to the website", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -107,56 +112,80 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 5
+ testRunner.Given("User open Demoblaze website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 6
- testRunner.Given("I am on the Assure login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("User clicks Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.And(string.Format("I entered the \'{0}\' and \'{1}\'", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("User enters the username \"{0}\" and password \"{1}\"", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
- testRunner.When("I click login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("User clicks Proceed login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
- testRunner.Then("I am able to login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User gets redirected to homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 10
- testRunner.And("I navigate to module ->Environment ->Release To Water", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 11
- testRunner.And("I added first new record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 12
-  testRunner.And("I click New Record Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 13
-  testRunner.And(string.Format("I fill in the \'{0}\' and \'{1}\' field", sampleDate_One, description_One), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 14
-  testRunner.And("I click Save and Close Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line hidden
-#line 15
- testRunner.And("I added second new record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Login to the website with invalid/non existing user")]
+        [NUnit.Framework.CategoryAttribute("Login")]
+        [NUnit.Framework.CategoryAttribute("Negative")]
+        [NUnit.Framework.TestCaseAttribute("DhanaTest", "1234", null)]
+        [NUnit.Framework.TestCaseAttribute("xcas", "1234", null)]
+        [NUnit.Framework.TestCaseAttribute("test", "", null)]
+        public virtual void LoginToTheWebsiteWithInvalidNonExistingUser(string username, string password, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Login",
+                    "Negative"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Username", username);
+            argumentsOfScenario.Add("Password", password);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login to the website with invalid/non existing user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 16
-  testRunner.And("I click New Record Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 17
-  testRunner.And(string.Format("I fill in the \'{0}\' and \'{1}\' field", sampleDate_Two, description_Two), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.Given("User open Demoblaze website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 18
-  testRunner.And("I click Save and Close Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.When("User clicks Login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
- testRunner.And("I delete the first record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("User enters the username \"{0}\" and password \"{1}\"", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
- testRunner.And("I verify that First record has been deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("User clicks Proceed login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 21
- testRunner.And("I verify that the second record is still available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 22
- testRunner.And("I Click logout Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("User sees the failed login popup message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
