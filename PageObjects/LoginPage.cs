@@ -21,7 +21,7 @@ namespace DemoblazeBDD.PageObjects
        
         public IWebElement LoginProceed => Driver.FindElement(By.XPath("//button[contains(text(),'Log in')]"));
 
-        public IWebElement SigninProceed => Driver.FindElement(By.XPath("//input[@id='sign-password']"));
+        public IWebElement SigninProceed => Driver.FindElement(By.CssSelector("#signInModal > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(2)"));
 
         public IWebElement LogoutButton => Driver.FindElement(By.XPath("//a[normalize-space()='Log Out']"));
 
