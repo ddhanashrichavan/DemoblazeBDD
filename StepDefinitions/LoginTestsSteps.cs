@@ -59,7 +59,7 @@ namespace DemoblazeBDD.StepDefinitions
         [Then(@"User sees the failed login popup message")]
         public void ThenUserSeesTheFailedLoginPopupMessage()
         {
-           IAlert alert= _pageFactory.LoginPage.switchToAlert();
+           IAlert alert= _pageFactory.LoginPage.SwitchToAlert();
             string alertText = alert.Text;
             string[] actualText = { "Wrong password.", "User does not exist.", "Please fill out Username and Password." };
 
@@ -85,7 +85,7 @@ namespace DemoblazeBDD.StepDefinitions
         [Then(@"User sees the success popup message")]
         public void ThenUserSeesTheSuccessPopupMessage()
         {
-            IAlert alert = _pageFactory.LoginPage.switchToAlert();
+            IAlert alert = _pageFactory.LoginPage.SwitchToAlert();
             string alertText = alert.Text;
             string actualText = "Sign up successful.";
 
@@ -96,7 +96,7 @@ namespace DemoblazeBDD.StepDefinitions
         [Then(@"User sees the failed popup message")]
         public void ThenUserSeesTheFailedPopupMessage()
         {
-            IAlert alert = _pageFactory.LoginPage.switchToAlert();
+            IAlert alert = _pageFactory.LoginPage.SwitchToAlert();
             string alertText = alert.Text;
             string[] actualText = { "This user already exist.", "Please fill out Username and Password." };
 

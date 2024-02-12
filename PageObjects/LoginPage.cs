@@ -30,7 +30,7 @@ namespace DemoblazeBDD.PageObjects
             Navigate("https://www.demoblaze.com/index.html");
         }
 
-        public IAlert switchToAlert()
+        public IAlert SwitchToAlert()
         {
             return Driver.SwitchTo().Alert();
         }
