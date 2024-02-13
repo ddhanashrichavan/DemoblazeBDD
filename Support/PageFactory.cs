@@ -14,13 +14,14 @@ namespace SpecFlowProjectTest.Support
         {
             Driver = new Driver().Current;
             LoginPage = new LoginPage(Driver);
+            AboutAndContactUsPage = new AboutAndContactUsPage(Driver);
             Driver.Manage().Window.Maximize();
         }
 
         public IWebDriver Driver { get; }
         public LoginPage LoginPage { get; }
 
-
+        public AboutAndContactUsPage AboutAndContactUsPage { get; }
 
     }
 }

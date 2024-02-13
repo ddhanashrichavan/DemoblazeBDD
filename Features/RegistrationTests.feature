@@ -4,13 +4,14 @@
 Scenario: User will register into the website with a new username
 	Given User open Demoblaze website
 	When User clicks Sign Up
-	And User enters the signup username "<Username1>" and password "<Password1>"
+	And User enters unique username
+	And User enters the password "<Password1>"
 	And User click on Sign up to proceed
 	Then User sees the success popup message
 
 	Examples: 
-	| Username1 | Password1|
-	| Testcvb     | test  |
+	|  Password1|
+	|  test  |
 
 @Negative @Registration
 Scenario: Sign up to the website 

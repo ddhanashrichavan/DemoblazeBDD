@@ -8,6 +8,7 @@ namespace DemoblazeBDD.StepDefinitions
     [Binding]
     public class LoginTestsSteps
     {
+        public string email1;
         public readonly PageFactory _pageFactory;
         public LoginTestsSteps(PageFactory pageFactory) => _pageFactory = pageFactory;
 
@@ -23,6 +24,34 @@ namespace DemoblazeBDD.StepDefinitions
             _pageFactory.LoginPage.LoginButton.Click();
         }
 
+        //generate unique email
+        public string GenerateUniqueEmail()
+        {
+            string Month = DateTime.Now.ToString("MMM");
+            string Date = DateTime.Now.ToString("dd");
+            string year = DateTime.Now.ToString("yyyy");
+            DateTime d = DateTime.Now;
+            string dateString = d.ToString("yyyyMMddHHmmss");
+            string email1 = "ddhanashrichavan+" + dateString + "@gmail.com";
+            return this.email1 = email1;
+
+
+        }
+        [When(@"User enters unique username")]
+        public void WhenUserEntersUniqueUsername()
+        {
+
+            _pageFactory.LoginPage.UsernameSignin.SendKeys(GenerateUniqueEmail());
+        }
+
+        [When(@"User enters the password ""([^""]*)""")]
+        public void WhenUserEntersThePassword(string Password)
+        {
+            _pageFactory.LoginPage.PasswordSignin.SendKeys(Password);
+        }
+
+
+
         [When(@"User enters the username ""([^""]*)"" and password ""([^""]*)""")]
         public void WhenUserEntersTheUsernameAndPassword(string Username, string Password)
         {
@@ -37,6 +66,13 @@ namespace DemoblazeBDD.StepDefinitions
             _pageFactory.LoginPage.PasswordSignin.SendKeys(Password1);
         }
 
+        [When(@"User clicks Proceed login for existing user")]
+        public void WhenUserClicksProceedLoginForExistingUser()
+        {
+            _pageFactory.LoginPage.LoginProceed.Click();
+            _pageFactory.LoginPage.UntilExistsWait();
+        }
+
 
         [When(@"User clicks Proceed login")]
         public void WhenUserClicksProceedLogin()
@@ -49,11 +85,17 @@ namespace DemoblazeBDD.StepDefinitions
         [Then(@"User gets redirected to homepage")]
         public void ThenUserGetsRedirectedToHomepage()
         {
-            IWebElement element = _pageFactory.LoginPage.LoginButton;
-            String logoutText= element.Text;
-            string actualText1 = "Log out";
+            //IWebElement element = _pageFactory.LoginPage.LogoutButton;
+            //String logoutText= element.Text;
+            //string actualText1 = "Log out";
 
-            Assert.That(string.Equals(logoutText,actualText1));
+            //Assert.That(string.Equals(logoutText,actualText1));
+
+           // Assert.Contains("Log out", _pageFactory.LoginPage..Text.ToString());
+
+            Assert.True(_pageFactory.LoginPage.LogoutButton.Displayed);
+
+
         }
 
         [Then(@"User sees the failed login popup message")]

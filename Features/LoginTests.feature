@@ -5,7 +5,7 @@ Scenario Outline:  Login to the website
 	Given User open Demoblaze website
 	When User clicks Login
     And User enters the username "<Username>" and password "<Password>"
-	And User clicks Proceed login
+	And User clicks Proceed login for existing user
 	Then User gets redirected to homepage
 
 	Examples: 

@@ -18,12 +18,12 @@ namespace DemoblazeBDD.PageObjects
         public IWebElement PasswordSignin => Driver.FindElement(By.XPath("//input[@id='sign-password']"));
         public IWebElement LoginButton => Driver.FindElement(By.XPath("//a[@id='login2']"));
         public IWebElement SigninButton => Driver.FindElement(By.XPath("//a[@id='signin2']"));
-       
+
         public IWebElement LoginProceed => Driver.FindElement(By.XPath("//button[contains(text(),'Log in')]"));
 
         public IWebElement SigninProceed => Driver.FindElement(By.CssSelector("#signInModal > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(2)"));
 
-        public IWebElement LogoutButton => Driver.FindElement(By.XPath("//a[normalize-space()='Log Out']"));
+        public IWebElement LogoutButton => Driver.FindElement(By.XPath("//a[@id='logout2']"));
 
         public void NavigateToLoginpage()
         {
@@ -35,18 +35,19 @@ namespace DemoblazeBDD.PageObjects
             return Driver.SwitchTo().Alert();
         }
 
-        public void UntilExists(IWebElement element)
+        public void UntilExistsWait()
         {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementToBeClickable(element));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
         }
 
         public void UntilAlertExists()
         {
-            WebDriverWait wait = new WebDriverWait(Driver,TimeSpan.FromSeconds(20));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.AlertIsPresent());
         }
 
+        
 
+        
     }
 }

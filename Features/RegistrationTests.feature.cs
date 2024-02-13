@@ -77,8 +77,8 @@ namespace DemoblazeBDD.Features
         [NUnit.Framework.DescriptionAttribute("User will register into the website with a new username")]
         [NUnit.Framework.CategoryAttribute("Positive")]
         [NUnit.Framework.CategoryAttribute("Registration")]
-        [NUnit.Framework.TestCaseAttribute("Testcvb", "test", null)]
-        public virtual void UserWillRegisterIntoTheWebsiteWithANewUsername(string username1, string password1, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("test", null)]
+        public virtual void UserWillRegisterIntoTheWebsiteWithANewUsername(string password1, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Positive",
@@ -89,7 +89,6 @@ namespace DemoblazeBDD.Features
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Username1", username1);
             argumentsOfScenario.Add("Password1", password1);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User will register into the website with a new username", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
@@ -119,12 +118,15 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("User clicks Sign Up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.And(string.Format("User enters the signup username \"{0}\" and password \"{1}\"", username1, password1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("User enters unique username", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
- testRunner.And("User click on Sign up to proceed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("User enters the password \"{0}\"", password1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
+ testRunner.And("User click on Sign up to proceed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
  testRunner.Then("User sees the success popup message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -152,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Username", username);
             argumentsOfScenario.Add("Password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up to the website", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 16
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -172,19 +174,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 17
+#line 18
  testRunner.Given("User open Demoblaze website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 18
+#line 19
  testRunner.When("User clicks Sign Up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 20
  testRunner.And(string.Format("User enters the signup username \"{0}\" and password \"{1}\"", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 21
  testRunner.And("User click on Sign up to proceed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 22
  testRunner.Then("User sees the failed popup message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
