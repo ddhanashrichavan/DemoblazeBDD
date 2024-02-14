@@ -96,8 +96,24 @@ namespace DemoblazeBDD.PageObjects
             wait.Until(ExpectedConditions.ElementExists(By.XPath("//a[@id='nameofuser']")));
         }
 
-        
+        public void ElementToBeVisible()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@id='name']")));
+        }
 
-        
+        public void WaitForElementToBeClickable(IWebElement locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementToBeClickable(locator));
+        }
+
+
+        public void SamsungElementToBeVisible()
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[text()='Samsung galaxy s6']")));
+        }
+
     }
 }

@@ -16,12 +16,16 @@ namespace DemoblazeBDD.StepDefinitions
         {
             _pageFactory.LoginPage.Categories.Click();
             _pageFactory.LoginPage.Phones.Click();
+            _pageFactory.LoginPage.SamsungElementToBeVisible();
         }
 
         [Then(@"User click on Samsung galaxy s(.*)")]
         public void ThenUserClickOnSamsungGalaxyS(int p0)
         {
             _pageFactory.LoginPage.Samsung_Galaxy_S6.Click();
+            
+
+
 
         }
 
@@ -30,6 +34,7 @@ namespace DemoblazeBDD.StepDefinitions
         {
             _pageFactory.LoginPage.Add_To_Cart_Button.Click();
             _pageFactory.LoginPage.UntilAlertExists();
+            _pageFactory.LoginPage.UntilExistsWait();
 
         }
 
@@ -55,6 +60,8 @@ namespace DemoblazeBDD.StepDefinitions
         public void ThenUserClickOnPlaceOrder()
         {
             _pageFactory.LoginPage.Place_Order_Button.Click();
+            _pageFactory.LoginPage.ElementToBeVisible();
+
         }
 
         [Then(@"User fill the form with fields '([^']*)' '([^']*)' '([^']*)' '([^']*)' '([^']*)' '([^']*)' and submit")]
