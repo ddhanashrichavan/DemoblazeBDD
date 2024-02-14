@@ -21,5 +21,7 @@ namespace DemoblazeBDD.PageObjects
         {
             return Driver.Url;
         }
+
+
     }
 }

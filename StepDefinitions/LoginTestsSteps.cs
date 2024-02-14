@@ -70,7 +70,8 @@ namespace DemoblazeBDD.StepDefinitions
         public void WhenUserClicksProceedLoginForExistingUser()
         {
             _pageFactory.LoginPage.LoginProceed.Click();
-            _pageFactory.LoginPage.UntilExistsWait();
+            //_pageFactory.LoginPage.UntilExistsWait();
+            _pageFactory.LoginPage.AfterLoginWait();
         }
 
 
@@ -91,9 +92,14 @@ namespace DemoblazeBDD.StepDefinitions
 
             //Assert.That(string.Equals(logoutText,actualText1));
 
-           // Assert.Contains("Log out", _pageFactory.LoginPage..Text.ToString());
+            // Assert.Contains("Log out", _pageFactory.LoginPage..Text.ToString());
 
-            Assert.True(_pageFactory.LoginPage.LogoutButton.Displayed);
+            //Assert.True(_pageFactory.LoginPage.NameOftheUser.Displayed);
+            string uri = _pageFactory.LoginPage.GetCurrentUrl();
+            string actual = "https://www.demoblaze.com/index.html";
+
+            Assert.That(string.Equals(uri,actual));
+            _pageFactory.LoginPage.Pagerefresh();
 
 
         }
